@@ -1,0 +1,17 @@
+spring:
+  security:
+    oauth2:
+      client:
+        registration:
+          myidp:
+            client-id: multipageapp
+            client-secret: not_used
+            authorization-grant-type: authorization_code
+            redirect-uri: "{baseUrl}/login/oauth2/code/{registrationId}"
+            scope:
+              - openid
+              - profile
+              - email
+        provider:
+          myidp:
+            issuer-uri: http://localhost:8081/auth/realms/demo

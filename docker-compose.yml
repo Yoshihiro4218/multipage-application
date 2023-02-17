@@ -9,4 +9,4 @@ services:
       - KEYCLOAK_USER=admin
       - KEYCLOAK_PASSWORD=admin
     volumes:
-      - ./data/keycloak:/opt/keycloak/data
+      - ./data/keycloak:/opt/jboss/keycloak/standalone/data

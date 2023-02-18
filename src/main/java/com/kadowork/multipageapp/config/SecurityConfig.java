@@ -5,6 +5,7 @@ import org.springframework.security.config.*;
 import org.springframework.security.config.annotation.web.builders.*;
 import org.springframework.security.config.annotation.web.configuration.*;
 import org.springframework.security.web.*;
+import org.springframework.security.web.authentication.*;
 import org.springframework.security.web.savedrequest.*;
 import org.springframework.security.web.util.matcher.*;
 
@@ -20,8 +21,10 @@ public class SecurityConfig {
 
         http.authorizeHttpRequests(authorize -> authorize
                     .requestMatchers("/public", "/public/*").permitAll()
+                    .requestMatchers("/login").permitAll()
                     .anyRequest().authenticated())
-            .oauth2Login(Customizer.withDefaults())
+            .oauth2Login(oauth2 -> oauth2
+                    .failureHandler(new SimpleUrlAuthenticationFailureHandler("/auth-error")))
             .requestCache((cache) -> cache
                     .requestCache(requestCache));
         // ログアウト未実装

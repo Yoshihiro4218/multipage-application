@@ -13,6 +13,7 @@ public class LoginFailureController {
 
     @GetMapping("")
     public String index() {
+        // 認証失敗なので、keycloak のログアウトを叩かないと home にいけてしまう。
         return "loginFailure";
     }
 }

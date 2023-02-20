@@ -15,3 +15,14 @@ spring:
         provider:
           myidp:
             issuer-uri: http://localhost:8081/auth/realms/demo
+
+logging:
+  level:
+    org:
+      apache:
+        http: DEBUG
+
+server:
+  tomcat:
+    accesslog:
+      enabled: true
